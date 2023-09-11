@@ -3,7 +3,6 @@ var selectValidValues = [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2];
 var buttonValidValues = [1, 1.5, 2, 2.5, 3];
 
 function validateSelection(value, validValues) {
-    console.log(value, validValues);
     return validValues.includes(value);
 }
 
@@ -39,21 +38,33 @@ yInput.addEventListener('input', () => {
 });
 
 let selectedRBtn;
-const rBtns = document.querySelectorAll('.form__r-btn')
+const rBtns = document.querySelectorAll('.form__r-btn');
 rBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        if (selectedRBtn !== btn) {
-            if (selectedRBtn !== undefined) {
-                selectedRBtn.classList.remove('selected-btn');
+        const selectedValue = parseFloat(btn.value); 
+        rBtns.forEach(otherBtn => {
+            otherBtn.classList.remove('selected-btn');
+        });
+        if (selectedValue !== selectedRBtn) { 
+            if (validateSelection(selectedValue, buttonValidValues)) {
+                btn.classList.add('selected-btn');
+                selectedRBtn = selectedValue; 
+                rValid = true;
+            } else {
+                selectedRBtn = undefined;
+                rValid = false;
             }
-            btn.classList.toggle('selected-btn');
-            selectedRBtn = btn;
+        } else {
+            btn.classList.remove('selected-btn');
+            selectedRBtn = undefined;
+            rValid = false;
         }
-        rValid = true;
-        redrawGraph(selectedRBtn.value)
+        redrawGraph(selectedRBtn ? selectedRBtn : "R");
         toggleSubmitBtn();
-    })
-})
+    });
+});
+
+
 
 const submitBtn = document.querySelector('.form__big-btn[type="submit"]');
 function toggleSubmitBtn() {
@@ -78,7 +89,7 @@ form.addEventListener('submit', e => {
     let params = {
         'x': xSelect.value,
         'y': yInput.value,
-        'r': selectedRBtn.value
+        'r': selectedRBtn
     }
     const target = 'php/submit.php' + formatParams(params)
 
