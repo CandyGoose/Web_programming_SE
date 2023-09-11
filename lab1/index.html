@@ -10,8 +10,13 @@
         @charset "UTF-8";
 
         @font-face {
-            font-family: Ferrum;
-            src: url('../fonts/Ferrum.otf') format('opentype'); 
+            font-family: "Ferrum";
+            src: url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.eot");
+            src: url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.eot?#iefix")format("embedded-opentype"),
+            url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.woff2")format("woff2"),
+            url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.woff")format("woff"),
+            url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.ttf")format("truetype"),
+            url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.svg#Ferrum")format("svg");
         }
 
 
@@ -104,7 +109,7 @@
         /*--------------------*/
 
         body {
-            font-family: Ferrum;
+            font-family: Ferrum, fantasy;
             color: var(--myblack);
             background: var(--mygray);
         }
@@ -363,7 +368,7 @@
 
         .footer__title {
             text-transform: uppercase;
-            font-family: Ferrum;
+            font-family: Ferrum, fantasy;
             font-size: 1.25rem;
         }
     </style>

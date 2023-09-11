@@ -1,9 +1,14 @@
 <?php
 
 $x = isset($_GET['x']) ? floatval($_GET['x']) : null;
-$y = isset($_GET['y']) ? str_replace(',', '.', $_GET['y']) : null;
 $r = isset($_GET['r']) ? floatval($_GET['r']) : null;
-
+$y = isset($_GET['y']) ? str_replace(',', '.', $_GET['y']) : null;
+if ($y !== null) {
+    $decimalPosition = strpos($y, '.');
+    if ($decimalPosition !== false) {
+        $y = substr($y, 0, $decimalPosition + 16);
+    }
+}
 
 session_start();
 
@@ -19,7 +24,7 @@ if (!validate_values($x, $y, $r)) {
 
 $result = check_area($x, $y, $r) ? "<span class='hit'>Hit</span>" : "<span class='miss'>Miss</span>";
 
-$exec_time = round(microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'], 5) . ' мс';
+$exec_time = round(microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'], 5) . ' ms';
 
 $_SESSION['tdata'][] = [$x, $y, $r, $current_time, $exec_time, $result];
 
@@ -34,7 +39,7 @@ function check_area($x, $y, $r) {
 
 function validate_values($x, $y, $r) {
     return in_array($x, [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2])
-        and (is_numeric($y) and (bccomp($y, '-3') >= 0 and bccomp($y, '5') <= 0))
+        and (is_numeric($y) and $y > -3 and $y < 5)
         and in_array($r, [1, 1.5, 2, 2.5, 3]);
 }
     

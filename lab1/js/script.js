@@ -27,7 +27,7 @@ yInput.addEventListener('input', () => {
     const yValue = parseFloat(yInput.value.trim().replace(',', '.')); 
     if (yValue === '' || yValue === NaN) {
         yInput.setCustomValidity('Check the value.');
-    } else if (yValue < -3 || yValue > 5) {
+    } else if (yValue <= -3 || yValue >= 5) {
         yInput.setCustomValidity('The value must be in the interval (-3 ... 5).');
     } else {
         yValid = true;
