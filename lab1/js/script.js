@@ -20,10 +20,12 @@ xSelect.addEventListener('change', () => {
     toggleSubmitBtn();
 });
 
-
 const yInput = document.querySelector('input[name="y"]');
 yInput.addEventListener('input', () => {
     yValid = false;
+    if (yInput.value.length > 17) {
+        yInput.value = yInput.value.slice(0, 17);
+    }
     const yValue = parseFloat(yInput.value.trim().replace(',', '.')); 
     if (yValue === '' || yValue === NaN) {
         yInput.setCustomValidity('Check the value.');
