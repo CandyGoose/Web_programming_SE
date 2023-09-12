@@ -77,7 +77,7 @@ function redrawGraph(r) {
     const fontSize = hatchGap / 3.5
     ctx.fillStyle = 'black'
 
-    ctx.font = `500 ${fontSize * 1.4}px Ferrum`;
+    ctx.font = `500 ${fontSize * 1.4}px "Ferrum", fantasy`;
     ctx.fillText('y', w / 2 - hatchWidth * 2.8, 15)
     ctx.fillText('x', w - 20, h / 2 - hatchWidth * 2.4)
 
@@ -91,7 +91,7 @@ function redrawGraph(r) {
     }
     rValue = label2
 
-    ctx.font = `500 ${fontSize}px Ferrum`;
+    ctx.font = `500 ${fontSize}px "Ferrum", fantasy`;
     ctx.fillText(label1, w / 2 + hatchGap - 3, h / 2 + hatchWidth * 2.8);
     ctx.fillText(label2, w / 2 + hatchGap * 2 - 3, h / 2 + hatchWidth * 2.8);
     ctx.fillText('-' + label1, w / 2 - hatchGap - 7, h / 2 + hatchWidth * 2.8);
