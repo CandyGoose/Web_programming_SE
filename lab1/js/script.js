@@ -101,7 +101,12 @@ form.addEventListener('submit', e => {
             tbody.innerHTML = xhr.response;
             let isHit = document.querySelector('tbody tr:last-child td:last-child span').classList.contains('hit')
             printDotOnGraph(xSelect.value, yInput.value, isHit)
-        } else console.log("status: ", xhr.status)
+        } else {
+            console.log("status: ", xhr.status);
+            if (xhr.status >= 400 && xhr.status < 600) {
+                alert(`An error has occurred: ${xhr.status} - ${xhr.statusText}`);
+            }
+        }
     };
 
     xhr.send();
@@ -116,7 +121,12 @@ clearBtn.addEventListener("click", e => {
     xhr.onloadend = () => {
         if (xhr.status === 200) {
             tbody.innerHTML = '';
-        } else console.log("status: ", xhr.status)
+        } else {
+            console.log("status: ", xhr.status);
+            if (xhr.status >= 400 && xhr.status < 600) {
+                alert(`An error has occurred: ${xhr.status} - ${xhr.statusText}`);
+            }
+        }
     };
     xhr.open("POST", "php/clear.php");
     xhr.send();
@@ -130,7 +140,12 @@ window.onload = () => {
         if (xhr.status === 200) {
             const tbody = document.querySelector('.main__table tbody');
             tbody.innerHTML = xhr.response;
-        } else console.log("status: ", xhr.status)
+        } else {
+            console.log("status: ", xhr.status);
+            if (xhr.status >= 400 && xhr.status < 600) {
+                alert(`An error has occurred: ${xhr.status} - ${xhr.statusText}`);
+            }
+        }
     };
     xhr.open("GET", "php/init.php");
     xhr.send();
