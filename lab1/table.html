@@ -199,82 +199,8 @@
             gap: 25px;
         }
 
-        .form {
-            width: 100%;
-            max-width: 400px;
-            align-self: center;
-            display: grid;
-            grid-template-columns: 20px 1fr;
-            gap: 15px;
-        }
-
-        .form__label {
-            font-size: 1.5rem;
-            margin-right: 10%;
-            padding-bottom: 25%;
-            align-self: center;
-        }
-
-        .form__row {
-            display: flex;
-            justify-content: space-between;
-            column-gap: 1%;
-        }
-
-        .form__row:last-child {
-            grid-column: 1/3;
-        }
-
-        select[name="x"] {
-            font-size: 1.1rem;
-            background: var(--mygray);
-            width: 100%;
-            padding-left: 2%;
-            border-radius: 5px; 
-            font-family: inherit;
-        }
-
-        .form__y-input {
-            font-size: 1.1rem;
-            background: var(--mygray);
-            width: 100%;
-            padding-left: 3%;
-            border-radius: 5px; 
-        }
-
-        .form__y-input::placeholder {
-            color: var(--myblack);
-        }
-
-        .form__r-btn {
-            flex: 1;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            background: var(--mygray);
-            border: 1px solid var(--mygray);
-            width: auto;
-            max-width: 25%;
-            box-sizing: border-box;
-        }
-
-        .form__r-btn:hover {
-            border: 1px solid var(--myblack);
-        }
-
-        .selected-btn {
-            background-color: var(--mydark);
-            color: var(--mygray);
-        }
-
-        #error-message {
-            color: var(--myred);
-            white-space: nowrap; 
-            display: inline; 
-            line-height: normal;
-        }
-
         .form__big-btn {
-            width: 100%;
+            width: 48%;
             font-size: 1rem;
             color: #fff;
             background: var(--myblack);
@@ -397,47 +323,6 @@
             <div class="container">
                 <h1 class="main__title">Web-programming, Lab #1</h1>
                 <div class="main__row">
-                    <div class="main__left-block">
-                        <canvas id="graph"></canvas>
-                        <form class="form" method="get">
-                            <label class="form__label">X</label>
-                            <div class="form__row">
-                                <select id="x" name="x">
-                                    <option class="form__x-col" value="" selected disabled hidden>Select</option>
-                                    <option class="form__x-col" value="2">2</option>
-                                    <option class="form__x-col" value="1.5">1.5</option>
-                                    <option class="form__x-col" value="1">1</option>
-                                    <option class="form__x-col" value="0.5">0.5</option>
-                                    <option class="form__x-col" value="0">0</option>
-                                    <option class="form__x-col" value="-0.5">-0.5</option>
-                                    <option class="form__x-col" value="-1">-1</option>
-                                    <option class="form__x-col" value="-1.5">-1.5</option>
-                                    <option class="form__x-col" value="-2">-2</option>
-                                </select>
-                            </div>
-
-                            <label for="Y" class="form__label">Y</label>
-                            <div class="form__row">
-                                <input id="Y" required class="form__y-input" name="y" placeholder="Input (-3 ... 5)" step="any" type="text" value="">
-                            </div>
-
-                            <label class="form__label">R</label>
-                            <div class="form__row">
-                                <button class="form__r-btn" type="button" value="1">1</button>
-                                <button class="form__r-btn" type="button" value="1.5">1.5</button>
-                                <button class="form__r-btn" type="button" value="2">2</button>
-                                <button class="form__r-btn" type="button" value="2.5">2.5</button>
-                                <button class="form__r-btn" type="button" value="3">3</button>
-                            </div>
-                            <p id="error-message"></p>
-
-                            <div class="form__row">
-                                <button class="form__big-btn" disabled type="submit">Submit</button>
-                                <button class="form__big-btn" type="reset">Clear</button>
-                            </div>
-
-                        </form>
-                    </div>
                     <div class="main__table-block">
                         <table class="main__table">
                             <thead>
@@ -455,22 +340,11 @@
                         </table>
                     </div>
                 </div>
+                <button class="form__big-btn" type="reset">Clear</button>
+                <button class="form__big-btn" type="button" id="returnButton">Return</button>
             </div>
         </main>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="footer__text">
-                    <a class="footer__title" href="https://se.ifmo.ru/courses/web">
-                        2023 / ITMO
-                    </a>
-                </div>
-            </div>
-        </footer>
     </div>
-
-    <script type='text/javascript' src="js/script.js"></script>
-    <script type='text/javascript' src="js/graph.js"></script>
-
+    <script type='text/javascript' src="js/table.js"></script>
 </body>
 </html>
