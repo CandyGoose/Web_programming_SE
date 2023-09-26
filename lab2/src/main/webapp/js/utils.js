@@ -1,3 +1,4 @@
+// Define a class for handling a square canvas
 class SquareCanvas {
 
     onclick;
@@ -57,7 +58,7 @@ class SquareCanvas {
     }
 
     fillText(text, x, y, scale = 1) {
-        this.ctx.font = `${this.scale * 4 * scale}pt Ferrum, fantasy`;
+        this.ctx.font = `${this.scale * 4 * scale}pt Ferrum, Morice, fantasy`;
         this.ctx.fillText(text, x * this.scale, y * this.scale);
     }
 }

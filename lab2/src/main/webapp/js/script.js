@@ -17,6 +17,7 @@ function draw({r}) {
     sc.updateArea();
     sc.ctx.lineWidth = 3;
 
+    // Define functions for upper and lower parts of the "batman" curve
     function batman_upper(x) {
         x = Math.abs(x);
         if (x < 0.5) {
@@ -48,7 +49,7 @@ function draw({r}) {
     const xyMax = 8.8;
 
     sc.ctx.beginPath();
-    sc.ctx.moveTo(50, sc.canvas.height / 2);
+    sc.ctx.moveTo(sc.canvas.width / 9.5, sc.canvas.height / 2);
 
     for (let i = 0; i < xValues.length; i++) {
         const x = (xValues[i] + xyMax) / (2 * xyMax) * sc.canvas.width;
@@ -95,7 +96,6 @@ function draw({r}) {
     sc.line(48.5, 70, 51.5, 70); // - -R/2
     sc.fillText(`-${R2}`, 52, 71, 0.8);
 
-
     sc.line(48.5, 90, 51.5, 90); // - -R
     sc.fillText(`-${R}`, 52, 91, 0.8);
 
@@ -108,7 +108,7 @@ function draw({r}) {
     sc.fillText("x", 95, 47);
     dotArray.forEach((dot, index) => {
         sc.fillText(`${dotArray.length-index}`, dot.x+0.5, dot.y-0.5, 0.8);
-        sc.dot(dot.x, dot.y, "#aaa")
+        sc.dot(dot.x, dot.y, "#000000")
     })
 }
 
@@ -131,16 +131,17 @@ function submit({x, y, r}, graphMode = false) {
     if (valid) {
         const queryString = `x=${encodeURIComponent(x)}&y=${encodeURIComponent(y)}&r=${encodeURIComponent(r)}&function=check&dot=${graphMode}`;
         const url = `${contextPath}?${queryString}`;
-        get_request(url, (html) => {
-            tm.innerHTML = html;
-        });
         if (!graphMode) {
             if (dotArray.length >= 10) {
                 dotArray = dotArray.slice(1, dotArray.length);
             }
-            dotArray.push({ x: parseFloat(x) + 50, y: parseFloat(y) + 50 });
+            dotArray.push({ x: parseFloat(x)*40/r+50, y: -parseFloat(y)*40/r+50 });
             draw(gather())
         }
+        get_request(url, (html) => {
+            tm.innerHTML = html;
+            window.location.href = "result.jsp";
+        });
     }
     return valid;
 }
@@ -148,15 +149,21 @@ function submit({x, y, r}, graphMode = false) {
 
 // Sends request on click
 sc.onclick = (e) => {
-    let dot = gather();
-    dot.x = (e.x / 100 - 0.5) * 10 / 4 * dot.r;
-    dot.y = (-e.y / 100 + 0.5) * 10 / 4 * dot.r;
-    if (submit(dot, true)) {
-        if(dotArray.length>=10)
-            dotArray = dotArray.slice(1,dotArray.length)
-        dotArray.push({x: e.x, y: e.y})
-        draw(gather())
+    if (rValid) {
+        rRadios.forEach(rRadio => rRadio.setCustomValidity(''));
+        let dot = gather();
+        dot.x = (e.x / 100 - 0.5) * 10 / 4 * dot.r;
+        dot.y = (-e.y / 100 + 0.5) * 10 / 4 * dot.r;
+        if (submit(dot, true)) {
+            if(dotArray.length>=10)
+                dotArray = dotArray.slice(1,dotArray.length)
+            dotArray.push({x: e.x, y: e.y})
+            draw(gather())
+        }
+    } else {
+        rRadios.forEach(rRadio => rRadio.setCustomValidity('Check the value.'));
     }
+    rRadios[0].reportValidity();
 }
 
 
@@ -176,7 +183,7 @@ window.addEventListener("load", () => {
     draw(gather());
 });
 
-
+// Save data on page unload
 window.addEventListener("unload", () => {
     const dataToSave = {
         r: oldR,
@@ -188,19 +195,20 @@ window.addEventListener("unload", () => {
 // Redraw on resize
 window.addEventListener("resize", () => draw(gather()));
 
-// Обработчик изменения радиуса r
+// Handle changes to the radius (r) input
 form.querySelectorAll("input[name=r]").forEach(input => {
     input.addEventListener("change", () => {
-        const newR = input.value;
-        dotArray.forEach(dot => {
-            dot.x = (dot.x-50) * oldR / newR + 50;
-            dot.y = (dot.y-50) * oldR / newR + 50;
-        });
-        oldR = newR;
-        draw(gather());
+        if (rValid) {
+            const newR = input.value;
+            dotArray.forEach(dot => {
+                dot.x = (dot.x-50) * oldR / newR + 50;
+                dot.y = (dot.y-50) * oldR / newR + 50;
+            });
+            oldR = newR;
+            draw(gather());
+        }
     });
 });
-
 
 // Send "clear" request
 document.querySelector("#clear-request")
@@ -214,7 +222,5 @@ document.querySelector("#clear-request")
 // Send "check" submit on submit
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    submit(gather());
+    submit(gather())
 })
-
-

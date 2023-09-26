@@ -1,11 +1,11 @@
 @font-face {
-    font-family: "Ferrum";
-    src: url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.eot");
-    src: url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.svg#Ferrum")format("svg");
+    font-family: Ferrum;
+    src: url("../fonts/ferrum.woff");
+}
+
+@font-face {
+    font-family: Morice;
+    src: url("../fonts/Morice-Bejar.woff");
 }
 
 .primary {
@@ -65,7 +65,7 @@ table th {
     padding: 0;
     list-style: none;
     text-decoration: none;
-    font-family: Ferrum, fantasy;
+    font-family: Ferrum, Morice, fantasy;
 }
 
 a {
@@ -75,7 +75,7 @@ a {
 
 body {
     background-color: #fffbff;
-    font-family: Ferrum, fantasy;
+    font-family: Ferrum, Morice, fantasy;
 }
 
 .error-label {
@@ -87,7 +87,7 @@ body {
     padding: 10px 0 10px 0;
     min-height: 70px;
     display: block;
-    font-family: monospace;
+    font-family: Ferrum, Morice, fantasy;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -99,21 +99,14 @@ body {
     justify-content: space-between;
 }
 
-a.logo-container {
-    color: white;
-}
-
-a.logo-container:hover {
-    color: #AAAAAA;
-}
-
-.logo-container {
+.name-container {
     height: 100%;
     display: table;
     float: left;
+    color: white;
 }
 
-.logo-container h1 {
+.name-container h1 {
     height: 100%;
     display: table-cell;
     vertical-align: middle;
@@ -121,7 +114,7 @@ a.logo-container:hover {
     font-weight: 800;
 }
 
-.logo-container h1 span {
+.name-container h1 span {
     margin-left: 10px;
     font-weight: 200;
 }
@@ -161,11 +154,11 @@ a.logo-container:hover {
 
 .content__block {
     padding: 10px 10px 10px 10px;
+    width: auto;
 }
 
 #request-form__wrapper {
     flex-grow: 1;
-    height: 375px;
 }
 
 .input-group {
@@ -189,7 +182,7 @@ a.logo-container:hover {
 
 .input-group .input-group__header {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
 }
 
 .text_field_input {
@@ -204,10 +197,6 @@ a.logo-container:hover {
 .text-field_input::placeholder {
     color: #5c5c5c;
     opacity: 0.3;
-}
-
-.text_field_input:hover, .text_field_input:focus {
-    border-color: #531947;
 }
 
 .input-group button {
@@ -233,7 +222,7 @@ a.logo-container:hover {
     -moz-appearance: none;
     width: 30px;
     height: 30px;
-    border: 2px solid purple;
+    border: 2px solid #797979;
     border-radius: 50%;
     background-color: white;
     cursor: pointer;
@@ -241,15 +230,14 @@ a.logo-container:hover {
 }
 
 .radio-group__button.active {
-    background-color: purple;
+    background-color: #AAAAAA;
 }
 
 .radio-group__button.active::before {
     content: "";
-    width: 16px;
-    height: 16px;
-    background-color: #572969;
-    border: 2px solid purple;
+    width: 18px;
+    height: 18px;
+    background-color: #797979;
     border-radius: 50%;
     position: absolute;
     top: 50%;
@@ -261,7 +249,7 @@ a.logo-container:hover {
     display: none;
 }
 
-.submit-button {
+.submit-button, .return-button {
     height: 2rem;
     flex-grow: 1;
     border-color: transparent;
@@ -271,10 +259,25 @@ a.logo-container:hover {
     background-color: #797979;
     color: white;
     transition: opacity 0.15s ease-in-out;
+    margin-bottom: 0.238rem;
 }
 
-.submit-button:active {
-    opacity: 0.8;
+.return-button {
+    margin: 0 45%;
+}
+
+.submit-button:hover, .return-button:hover, .clear-button:hover {
+    opacity: 0.7;
+}
+
+.submit-button:disabled {
+    opacity: 0.5;
+}
+
+#error-message {
+    color: red;
+    display: inline-block;
+    margin-left: 10px;
 }
 
 #history {
@@ -283,7 +286,7 @@ a.logo-container:hover {
 
 #history__wrapper {
     overflow-y: auto;
-    flex-grow: 2;
+    flex: 100%;
     max-height: 600px;
 }
 
@@ -291,6 +294,12 @@ a.logo-container:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#graph {
+    max-width: 100%;
+    height: 355px;
+    width: 355px;
 }
 
 
@@ -310,7 +319,7 @@ and (min-width: 321px) {
         flex-direction: column;
     }
 
-    .logo-container {
+    .name-container {
         text-align: center;
     }
 
@@ -318,16 +327,6 @@ and (min-width: 321px) {
         float: left;
         text-align: center;
     }
-
-
-    #graph__wrapper {
-        width: 100%;
-    }
-
-    #graph {
-        width: 100%;
-    }
-
 }
 
 @media screen and (min-width: 481px)  {
@@ -339,10 +338,6 @@ and (min-width: 321px) {
     .header__inner {
         flex-direction: row;
     }
-
-    #graph__wrapper {
-        width: auto;
-    }
 }
 
 
@@ -350,18 +345,11 @@ and (min-width: 321px) {
 and (min-width: 1224px) {
 
     .content {
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 90px;
+        margin-right: 90px;
     }
 
     .header__inner {
         flex-direction: row;
-    }
-
-    #graph {
-        max-width: 100%;
-        height: 375px;
-        width: 375px;
     }
 }
