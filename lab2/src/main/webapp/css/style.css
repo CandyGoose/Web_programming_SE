@@ -1,0 +1,367 @@
+@font-face {
+    font-family: "Ferrum";
+    src: url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.eot");
+    src: url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/f17aa3d7ac14a97a8be892c45c6d60fc.svg#Ferrum")format("svg");
+}
+
+.primary {
+    background-color: #702963;
+    color: white;
+}
+
+.background .content__block {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 5px;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.background .content__block:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.accent {
+    background-color: #E1E1E1;
+    transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.accent:hover {
+    background-color: #d7d7d7;
+}
+
+.accent:active, .accent.active {
+    background-color: #AAAAAA;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table tr {
+    line-height: 2rem;
+}
+
+table td {
+    padding: 5px 0 5px 0;
+    border-top: #d7d7d7 1px solid;
+    border-bottom: #d7d7d7 1px solid;
+    text-align: center;
+}
+
+
+table th {
+    border: none;
+    min-width: 50px;
+    padding: 0 7px 0 7px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: Ferrum, fantasy;
+}
+
+a {
+    color: black;
+}
+
+
+body {
+    background-color: #fffbff;
+    font-family: Ferrum, fantasy;
+}
+
+.error-label {
+    color: black;
+}
+
+.header {
+    width: 100%;
+    padding: 10px 0 10px 0;
+    min-height: 70px;
+    display: block;
+    font-family: monospace;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.header__inner {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+a.logo-container {
+    color: white;
+}
+
+a.logo-container:hover {
+    color: #AAAAAA;
+}
+
+.logo-container {
+    height: 100%;
+    display: table;
+    float: left;
+}
+
+.logo-container h1 {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.logo-container h1 span {
+    margin-left: 10px;
+    font-weight: 200;
+}
+
+.contact {
+    height: 100%;
+    display: table;
+    float: left;
+    text-align: right;
+}
+
+.contact h1 {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.contact h1 span {
+    margin-left: 5px;
+    font-weight: 200;
+}
+
+.content {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+    align-items: flex-start;
+}
+
+.content > * {
+    margin: 5px;
+}
+
+.content__block {
+    padding: 10px 10px 10px 10px;
+}
+
+#request-form__wrapper {
+    flex-grow: 1;
+    height: 375px;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.input-group > * {
+    margin: 0 7px 0 7px;
+}
+
+.input-group.column-flex {
+    flex-direction: column;
+}
+
+.input-group.row-flex {
+    flex-direction: row;
+}
+
+.input-group .input-group__header {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.text_field_input {
+    display: block;
+    height: calc(1.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    border-radius: 5px;
+    transition: border-color 0.45s ease-in-out;
+    border-color: #5c5c5c;
+}
+
+.text-field_input::placeholder {
+    color: #5c5c5c;
+    opacity: 0.3;
+}
+
+.text_field_input:hover, .text_field_input:focus {
+    border-color: #531947;
+}
+
+.input-group button {
+    margin-bottom: 10px;
+    font-weight: 600;
+    min-width: 2rem;
+    font-size: 1rem;
+    height: 2.5rem;
+    flex-grow: 1;
+    border-color: transparent;
+    border-radius: 10px;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group__button {
+    margin-right: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 30px;
+    height: 30px;
+    border: 2px solid purple;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+}
+
+.radio-group__button.active {
+    background-color: purple;
+}
+
+.radio-group__button.active::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: #572969;
+    border: 2px solid purple;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.value-button__input {
+    display: none;
+}
+
+.submit-button {
+    height: 2rem;
+    flex-grow: 1;
+    border-color: transparent;
+    border-radius: 3px;
+    padding: 3px 8px 3px 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    background-color: #797979;
+    color: white;
+    transition: opacity 0.15s ease-in-out;
+}
+
+.submit-button:active {
+    opacity: 0.8;
+}
+
+#history {
+    width: 100%;
+}
+
+#history__wrapper {
+    overflow-y: auto;
+    flex-grow: 2;
+    max-height: 600px;
+}
+
+#graph__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media only screen
+and (min-width: 321px) {
+
+    .header {
+        height: 140px;
+    }
+
+    .content {
+        margin-left: 7px;
+        margin-right: 7px;
+    }
+
+    .header__inner {
+        flex-direction: column;
+    }
+
+    .logo-container {
+        text-align: center;
+    }
+
+    .contact {
+        float: left;
+        text-align: center;
+    }
+
+
+    #graph__wrapper {
+        width: 100%;
+    }
+
+    #graph {
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width: 481px)  {
+
+    .header {
+        height: 70px;
+    }
+
+    .header__inner {
+        flex-direction: row;
+    }
+
+    #graph__wrapper {
+        width: auto;
+    }
+}
+
+
+@media only screen
+and (min-width: 1224px) {
+
+    .content {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .header__inner {
+        flex-direction: row;
+    }
+
+    #graph {
+        max-width: 100%;
+        height: 375px;
+        width: 375px;
+    }
+}
