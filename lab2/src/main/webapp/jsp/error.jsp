@@ -3,6 +3,7 @@
 <c:set var="statusCode" scope="request" value="<%=response.getStatus()%>"/>
 <html lang="en">
 <c:set var="title" scope="request" value="Error ${statusCode}"/>
+<%@ include file="/jsp/head.jsp" %>
 <body>
 <div class="content background">
     <h2 class="error-label">Error (${statusCode})</h2>
