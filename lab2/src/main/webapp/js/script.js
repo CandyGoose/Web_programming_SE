@@ -136,6 +136,7 @@ function submit({x, y, r}, graphMode = false) {
         }
         get_request(url, (html) => {
             tm.innerHTML = html;
+            window.location.href = "result.jsp";
         });
     }
     return valid;

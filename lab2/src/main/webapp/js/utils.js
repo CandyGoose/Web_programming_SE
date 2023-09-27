@@ -96,8 +96,10 @@ function get_request(link, event) {
                 draw(gather())
             } else {
                 console.log("status: ", xhr.status);
-                if (xhr.status >= 400 && xhr.status < 600 || xhr.status === 0) {
-                    errorMessageBox.textContent = `An error has occurred: status ${xhr.status} ${xhr.statusText}`;
+                if (xhr.status >= 400 && xhr.status < 600) {
+                    errorMessageBox.textContent = `An error has occurred: status ${xhr.status} - ${xhr.statusText}`;
+                } else if (xhr.status === 0) {
+                    errorMessageBox.textContent = `An error has occurred: Server is down`;
                 }
                 dotArray.pop()
             }
