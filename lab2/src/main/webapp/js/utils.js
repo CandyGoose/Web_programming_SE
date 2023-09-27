@@ -89,8 +89,20 @@ function objectToFormData(object) {
 // GET XMLHttpRequest wrapper
 function get_request(link, event) {
     let xhr = new XMLHttpRequest();
-    if (event)
-        xhr.onloadend = () => event(xhr.response);
+    if (event) {
+        xhr.onloadend = () => {
+            if (xhr.status === 200) {
+                event(xhr.response);
+                draw(gather())
+            } else {
+                console.log("status: ", xhr.status);
+                if (xhr.status >= 400 && xhr.status < 600 || xhr.status === 0) {
+                    errorMessageBox.textContent = `An error has occurred: status ${xhr.status} ${xhr.statusText}`;
+                }
+                dotArray.pop()
+            }
+        }
+    }
     xhr.open("GET", link);
     xhr.send();
 }

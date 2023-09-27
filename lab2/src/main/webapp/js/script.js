@@ -132,15 +132,10 @@ function submit({x, y, r}, graphMode = false) {
         const queryString = `x=${encodeURIComponent(x)}&y=${encodeURIComponent(y)}&r=${encodeURIComponent(r)}&function=check&dot=${graphMode}`;
         const url = `${contextPath}?${queryString}`;
         if (!graphMode) {
-            if (dotArray.length >= 10) {
-                dotArray = dotArray.slice(1, dotArray.length);
-            }
             dotArray.push({ x: parseFloat(x)*40/r+50, y: -parseFloat(y)*40/r+50 });
-            draw(gather())
         }
         get_request(url, (html) => {
             tm.innerHTML = html;
-            window.location.href = "result.jsp";
         });
     }
     return valid;
@@ -155,10 +150,7 @@ sc.onclick = (e) => {
         dot.x = (e.x / 100 - 0.5) * 10 / 4 * dot.r;
         dot.y = (-e.y / 100 + 0.5) * 10 / 4 * dot.r;
         if (submit(dot, true)) {
-            if(dotArray.length>=10)
-                dotArray = dotArray.slice(1,dotArray.length)
             dotArray.push({x: e.x, y: e.y})
-            draw(gather())
         }
     } else {
         rRadios.forEach(rRadio => rRadio.setCustomValidity('Check the value.'));
