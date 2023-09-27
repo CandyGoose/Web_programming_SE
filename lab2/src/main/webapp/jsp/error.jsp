@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" isErrorPage="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="statusCode" scope="request" value="<%=response.getStatus()%>"/>
-<html lang="ru">
+<html lang="en">
 <c:set var="title" scope="request" value="Error ${statusCode}"/>
 <body>
 <div class="content background">

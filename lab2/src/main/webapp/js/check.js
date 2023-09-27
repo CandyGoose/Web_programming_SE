@@ -19,17 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
             xBtns.forEach(otherBtn => {
                 otherBtn.classList.remove('active');
             });
-            if (selectedValue !== selectedXBtn && selectedValue.toString() === btn.value) {
-                if (validateSelection(selectedValue, xValidValues)) {
-                    btn.classList.add('active');
-                    selectedXBtn = selectedValue;
-                    xValid = true;
-                    errorMessageBox.textContent = '';
-                } else {
-                    selectedXBtn = undefined;
-                    xValid = false;
-                    errorMessageBox.textContent = 'Check the value.';
-                }
+            if (selectedValue !== selectedXBtn && selectedValue.toString() === btn.value && validateSelection(selectedValue, xValidValues)) {
+                btn.classList.add('active');
+                selectedXBtn = selectedValue;
+                xValid = true;
+                errorMessageBox.textContent = '';
             } else {
                 btn.classList.remove('active');
                 selectedXBtn = undefined;

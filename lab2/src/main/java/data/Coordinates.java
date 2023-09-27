@@ -7,7 +7,7 @@ public class Coordinates {
 
     private final String x;
     private final String y;
-    private final int r;
+    private final String r;
 
     /**
      * Creates a new Coordinates object with the specified 'x', 'y', and 'r' values.
@@ -16,7 +16,7 @@ public class Coordinates {
      * @param y The 'y' coordinate value as a string.
      * @param r The 'r' value representing a radius.
      */
-    public Coordinates(String x, String y, int r) {
+    public Coordinates(String x, String y, String r) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -55,7 +55,7 @@ public class Coordinates {
      *
      * @return The 'r' value.
      */
-    public int getR() {
+    public String getR() {
         return r;
     }
 }

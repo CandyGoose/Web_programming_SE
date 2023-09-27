@@ -1,15 +1,3 @@
-document.querySelectorAll(".button-group")
-    .forEach((group) => {
-            let buttons = group.querySelectorAll("button.button-group__button, input[type=button].button-group__button");
-            buttons.forEach((button) => {
-                button.addEventListener("click", () => {
-                    buttons.forEach((e) => e.classList.remove("active"));
-                    button.classList.add("active");
-                })
-            })
-        }
-    )
-
 document.querySelectorAll("form").forEach((form) =>
     form.querySelectorAll("button.value-button, input[type=button].value-button")
         .forEach(button => button.addEventListener("click", () => {

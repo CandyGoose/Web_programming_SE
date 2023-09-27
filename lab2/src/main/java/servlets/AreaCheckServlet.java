@@ -42,16 +42,16 @@ public class AreaCheckServlet extends HttpServlet {
             BigDecimal y = new BigDecimal(req.getParameter("y"));
             boolean dot = Boolean.parseBoolean(req.getParameter("dot"));
 
-            coordinates = new Coordinates(x.toString().replace('.', ','), y.toString().replace('.', ','), r);
             if (validate(x, y, r, dot)) {
                 boolean inArea = inArea(x.doubleValue(), y.doubleValue(), r);
                 result = inArea ? Result.Type.HIT : Result.Type.FAIL;
             } else {
                 result = Result.Type.FAILED_VALIDATING;
             }
-        } catch (NumberFormatException e) {
+        } catch (NullPointerException | NumberFormatException e) {
             result = Result.Type.WRONG_FORMAT;
         } finally {
+            coordinates = new Coordinates(req.getParameter("x").replace('.', ','), req.getParameter("y").replace('.', ','), req.getParameter("r").replace('.', ','));
             resultList.add(new Result(
                     coordinates,
                     new Date(),
