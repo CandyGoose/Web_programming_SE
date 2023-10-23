@@ -10,11 +10,23 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+/**
+ * This class defines a custom validator for the "R" input field in a JavaServer Faces (JSF) application.
+ * It ensures that the input value is a valid number within a specific range with a specified step.
+ */
 @FacesValidator("validatorR")
 public class ValidatorR implements Validator {
 
     private static final String NUMBER_PATTERN = "^(-)?[0-9]+(\\.[0-9]+)?$";
 
+    /**
+     * Validates the "R" input field to ensure it's a valid number within a specific range.
+     *
+     * @param facesContext The current FacesContext.
+     * @param uiComponent  The UIComponent associated with the "R" input field.
+     * @param o            The value to be validated.
+     * @throws ValidatorException if the validation fails, with an appropriate error message.
+     */
     @Override
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
         if (o == null) {
