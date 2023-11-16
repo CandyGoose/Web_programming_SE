@@ -1,0 +1,254 @@
+.main__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 25px;
+}
+
+.main__row {
+    padding: 30px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1.56rem;
+    margin: 0 25px;
+}
+
+.main__left-block,
+.main__table-block {
+    background: #fff;
+    border-radius: 7px;
+}
+
+.main__left-block {
+    align-self: flex-start;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    min-width: 330px;
+}
+
+.graph {
+    max-width: 300px;
+}
+
+
+.form {
+    width: 100%;
+    max-width: 400px;
+    align-self: center;
+    display: grid;
+    gap: 15px;
+}
+
+
+.main__table-block  {
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 10px;
+    text-align: left;
+    overflow-x: auto;
+}
+
+.form .form-inputs .y-coord label {
+    display: block;
+}
+
+
+.form__row p {
+    color: red;
+    margin-top: -3px;
+    font-size: 16px;
+}
+
+.x-coord,
+.y-coord,
+.r-coord,
+.p-multiselect,
+.p-multiselect-trigger {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: var(--mydark);
+}
+
+.p-multiselect{
+    background: var(--mygray);
+    height: 30px;
+    display: block;
+}
+
+.p-multiselect-items-wrapper {
+    background: var(--mygray);
+}
+
+.p-multiselect-close {
+    display: none;
+}
+
+.p-multiselect-items-wrapper {
+    max-height: 250px !important;
+    padding: 5px 0;
+}
+
+.p-checkbox {
+    border: #e6e6e6 1px solid;
+    border-radius: 30%;
+    margin: 2px 0 2px 10px;
+}
+
+.p-checkbox + span {
+    margin-left: 5px;
+}
+
+.p-multiselect-select-all {
+    display: none;
+}
+
+.p-multiselect-label-container {
+    overflow: inherit;
+    text-align: center;
+}
+
+.form__label {
+    width: 50px;
+    margin-right: -10px;
+    padding-bottom: 17px;
+    padding-left: 10px;
+    display: flex;
+    font-size: 1.5rem;
+    align-self: center;
+}
+
+input[name=y] {
+    width: 100%;
+    text-align: center;
+    background: var(--mygray);
+    font-size: 16px;
+    height: 30px;
+    border-radius: 6px;
+}
+
+.form__row {
+    justify-content: space-between;
+    column-gap: 10px;
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+.form__row:last-child {
+    grid-column: 1/3;
+}
+
+button {
+    width: 100%;
+    font-size: 1rem;
+    color: #fff;
+    background: var(--myblack);
+    padding: 7px;
+    border-radius: 5px;
+    transition: background 0.2s ease-in;
+}
+
+button[type="button"] {
+    background: #8A4A4AFF;
+}
+
+.big-btn:hover {
+    background: var(--myred);
+    transition: background 0.1s ease-out;
+}
+
+.big-btn:disabled {
+    opacity: 0.2;
+    background: var(--myblack);
+}
+
+.main__table-block {
+    width: 100%;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+table tr {
+    box-shadow: 0 0 1px 0 #bbb;
+}
+
+table th {
+    padding: 0.6rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+table td {
+    padding: 5px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+@media only screen and (max-width: 1101px) {
+    .content {
+        margin: 0;
+    }
+
+    .graph,
+    .form {
+        display: block;
+    }
+
+    .form .form-inputs .x-coord > div,
+    .form .form-inputs .r-coord > div {
+        display: inline-block;
+    }
+
+    .main__table-block table {
+        margin: 0;
+    }
+
+    .form .form-inputs .y-coord label {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .main__row {
+        flex-direction: column;
+    }
+
+    .main__left-block {
+        align-self: stretch;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px 60px;
+    }
+}
+
+@media only screen and (max-width: 810px) {
+    html {
+        font-size: 14px;
+    }
+
+    .main__left-block {
+        flex-direction: column;
+    }
+
+    .graph {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .main__left-block {
+        padding: 20px;
+        min-width: 340px;
+    }
+}

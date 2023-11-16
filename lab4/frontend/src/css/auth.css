@@ -1,0 +1,39 @@
+@media only screen and (max-width: 1101px) {
+    .input-fields {
+        text-align: left;
+    }
+}
+
+@media only screen and (max-width: 810px) {
+    .input-fields .input-field label {
+        display: block;
+    }
+}
+
+.input-fields {
+    text-align: center;
+}
+
+.input-fields  .input-field {
+    margin: 10px;
+}
+
+.input-fields .input-field label {
+    margin-right: 5px;
+}
+
+
+.input-field button {
+    width: 150px;
+    font-size: 1rem;
+    color: #fff;
+    background: var(--myblack);
+    padding: 7px;
+    border-radius: 5px;
+    transition: background 0.2s ease-in;
+}
+
+p {
+    margin: 10px 0;
+    color: red;
+}
