@@ -6,6 +6,8 @@
 ### Лабораторные
 [1 - PHP](https://github.com/VeraKasianenko/Web_programming_SE/tree/main/lab1)
 
-[2 - JSP](https://github.com/VeraKasianenko/Web_programming_SE/tree/main/lab2)
+[2 - JSP + Servlets](https://github.com/VeraKasianenko/Web_programming_SE/tree/main/lab2)
 
 [3 - JSF](https://github.com/VeraKasianenko/Web_programming_SE/tree/main/lab3)
+
+[4 - Java EE + React](https://github.com/VeraKasianenko/Web_programming_SE/tree/main/lab4)
