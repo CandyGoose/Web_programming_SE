@@ -276,7 +276,7 @@ const MainPage = () => {
                 </div>
 
                 <div className="main__table-block">
-                    {isLoading && <p>Loading...</p>}
+                    {isLoading && <div>Loading...</div>}
                     {isError && <p>Something went wrong...</p>}
                     {isSuccess && <table>
                         <thead>

@@ -8,12 +8,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: { ...credentials }
             }),
-            onError: (error) => {
-                if (error.status === 401) {
-                    throw new Error('Check name and password.');
-                }
-                throw new Error('Error');
-            }
         }),
         registration: builder.mutation({
             query: credentials => ({
@@ -21,12 +15,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: { ...credentials }
             }),
-            onError: (error) => {
-                if (error.status === 401) {
-                    throw new Error('Check name and password.');
-                }
-                throw new Error('Error');
-            }
         }),
     })
 });

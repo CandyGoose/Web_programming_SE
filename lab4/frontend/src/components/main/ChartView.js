@@ -12,7 +12,6 @@ const ChartView = (
     const getScaleFactorY = () => { return getHeight() / (maxY - minY)}
 
     // Position Extracting
-
     const getCursorPosition = (event) => {
         const rect = canvasRef.current.getBoundingClientRect();
         const x = event.clientX - rect.left;
@@ -21,7 +20,6 @@ const ChartView = (
     }
 
     // Coordinate - Position Converting
-
     const positionToCoordinate = (position) => {
         const offsetX = position.x / getScaleFactorX();
         const offsetY = position.y / getScaleFactorY();

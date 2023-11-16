@@ -6,12 +6,11 @@ import Header from "../header/Header";
 import "../../css/theme.css";
 import "../../css/auth.css";
 import {useState} from "react";
-import {setTokens} from "./authSlice";
 
 const RegistrationPage = () => {
     const navigate = useNavigate()
 
-    const [registration, { isSuccess }] = useRegistrationMutation();
+    const [registration] = useRegistrationMutation();
 
     const {
         register,
@@ -24,16 +23,19 @@ const RegistrationPage = () => {
 
     const onSubmit = async (data) => {
         try {
-            if (isSuccess) {
-                await registration(data);
-                navigate("/login");
+            const result = await registration(data);
+            if (result.error && result.error.status === 401) {
+                setError('A user with this name already exists');
+            } else if (result.error) {
+                setError(result.error.message || 'Error occurred.');
             } else {
-                setError('The user already exists.');
+                navigate("/login");
             }
         } catch (error) {
-            setError('Error.');
+            setError('Error occurred.');
         }
     }
+
 
     return (
         <>
