@@ -5,6 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * Represents a user entry in the database.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

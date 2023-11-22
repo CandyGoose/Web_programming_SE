@@ -5,8 +5,17 @@ import Models.Coordinates;
 import javax.ejb.Stateless;
 import java.math.BigDecimal;
 
+/**
+ * CoordinatesChecker performs geometric checks based on provided coordinates.
+ */
 @Stateless
 public class CoordinatesChecker {
+    /**
+     * Checks if the given coordinates fall within specified geometric shapes.
+     *
+     * @param coordinates The coordinates to be checked.
+     * @return True if the coordinates fall within the specified shapes; otherwise, false.
+     */
     public Boolean check(Coordinates coordinates) {
         BigDecimal x = new BigDecimal(String.valueOf(coordinates.getX()).replace(',', '.'));
         BigDecimal y = new BigDecimal(String.valueOf(coordinates.getY()).replace(',', '.'));

@@ -6,6 +6,9 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/**
+ * Represents a result entry containing coordinates and related details.
+ */
 @Data
 @AllArgsConstructor
 @JsonFormat(shape = JsonFormat.Shape.STRING)

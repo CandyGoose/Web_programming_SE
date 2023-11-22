@@ -13,12 +13,21 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.util.List;
 
+/**
+ * Resource for handling operations related to results.
+ */
 @Stateless
 @Path("/results")
 public class ResultsResource {
     @EJB
     private ResultsBean resultsBean;
 
+    /**
+     * Retrieves results associated with the authenticated user.
+     *
+     * @param securityContext The security context providing user information.
+     * @return Response containing the list of results.
+     */
     @Secured
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -30,6 +39,13 @@ public class ResultsResource {
         return Response.ok().entity(results).build();
     }
 
+    /**
+     * Checks coordinates for the authenticated user.
+     *
+     * @param securityContext The security context providing user information.
+     * @param coordinates     The coordinates to check.
+     * @return Response containing the check response.
+     */
     @Secured
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -43,6 +59,12 @@ public class ResultsResource {
         return Response.ok().entity(response).build();
     }
 
+    /**
+     * Clears results associated with the authenticated user.
+     *
+     * @param securityContext The security context providing user information.
+     * @return Response indicating success or failure.
+     */
     @Secured
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)

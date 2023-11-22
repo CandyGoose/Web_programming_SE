@@ -14,9 +14,18 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.Optional;
 
+/**
+ * Authentication filter for processing incoming requests.
+ */
 @Secured
 @Provider
 public class AuthenticationFilter implements ContainerRequestFilter {
+    /**
+     * Filters the incoming request context for authentication.
+     *
+     * @param requestContext The container request context.
+     * @throws IOException if an I/O exception occurs.
+     */
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
         Optional<UserPrincipal> optionalUser = HTTPHeaderExtractor

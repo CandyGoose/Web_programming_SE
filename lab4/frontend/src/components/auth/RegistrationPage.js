@@ -16,10 +16,28 @@ const RegistrationPage = () => {
         register,
         handleSubmit,
         formState: { errors },
-        getValues
+        getValues,
+        setValue
     } = useForm();
 
     const [error, setError] = useState(null);
+
+    const validateForm = (value) => {
+        const regex = /^[a-zA-Zа-яА-ЯёЁ0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/;
+        if (!regex.test(value)) {
+            const invalidChars = value.split('').filter((char, index, self) => {
+                return !regex.test(char) && self.indexOf(char) === index;
+            }).join(', ');
+            return `Invalid character(s): ${invalidChars}`;
+        }
+        return true;
+    };
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        const updatedValue = value.replace(/[\t ]/g, "");
+        setValue(name, updatedValue);
+    };
 
     const onSubmit = async (data) => {
         try {
@@ -55,8 +73,14 @@ const RegistrationPage = () => {
                                     minLength: {
                                         value: 6,
                                         message: "Username should be at-least 6 characters"
-                                    }
+                                    },
+                                    maxLength: {
+                                        value: 30,
+                                        message: "Password should be less than 30 characters"
+                                    },
+                                    validate: validateForm
                                 })}
+                                onChange={handleInputChange}
                             />
                             {errors.username && <p>{errors.username.message}</p>}
                         </div>
@@ -72,8 +96,14 @@ const RegistrationPage = () => {
                                     minLength: {
                                         value: 6,
                                         message: "Password should be at-least 6 characters"
-                                    }
+                                    },
+                                    maxLength: {
+                                        value: 30,
+                                        message: "Password should be less than 30 characters"
+                                    },
+                                    validate: validateForm
                                 })}
+                                onChange={handleInputChange}
                             />
                             {errors.password1 && <p>{errors.password1.message}</p>}
                         </div>
@@ -91,6 +121,7 @@ const RegistrationPage = () => {
                                         ? true
                                         : "Password and password confirmation must be equal"
                                 })}
+                                onChange={handleInputChange}
                             />
                             {errors.password2 && <p>{errors.password2.message}</p>}
                             {error && <p className="error-message">{error}</p>}

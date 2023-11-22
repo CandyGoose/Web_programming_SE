@@ -6,6 +6,9 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Represents a result entry in the database.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

@@ -14,6 +14,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+/**
+ * Resource handling authentication operations.
+ */
 @Log
 @Stateless
 @Path("/auth")
@@ -21,6 +24,12 @@ public class AuthResource {
     @EJB
     private AuthBean authBean;
 
+    /**
+     * Handles the login operation.
+     *
+     * @param request The login request.
+     * @return Response containing tokens or error.
+     */
     @POST
     @Path("/login")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -36,6 +45,12 @@ public class AuthResource {
         }
     }
 
+    /**
+     * Handles the token refresh operation.
+     *
+     * @param request The refresh token request.
+     * @return Response containing new tokens or error.
+     */
     @POST
     @Path("/refresh")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -51,6 +66,12 @@ public class AuthResource {
         }
     }
 
+    /**
+     * Handles the user registration operation.
+     *
+     * @param request The registration request.
+     * @return Response indicating success or error.
+     */
     @POST
     @Path("/registration")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -66,6 +87,12 @@ public class AuthResource {
         }
     }
 
+    /**
+     * Transforms a LoginException into an Error object.
+     *
+     * @param exception The LoginException to transform.
+     * @return Error object containing error code and message.
+     */
     private static Error transform(LoginException exception) {
         String code;
         switch (exception.getCode()) {
@@ -83,6 +110,12 @@ public class AuthResource {
         return new Error(code, exception.getMessage());
     }
 
+    /**
+     * Transforms a RegistrationException into an Error object.
+     *
+     * @param exception The RegistrationException to transform.
+     * @return Error object containing error code and message.
+     */
     private static Error transform(RegistrationException exception) {
         String code;
         switch (exception.getCode()) {
@@ -102,10 +135,15 @@ public class AuthResource {
                 code = "REGISTRATION_UNKNOWN";
                 break;
         }
-
         return new Error(code, exception.getMessage());
     }
 
+    /**
+     * Transforms a RefreshTokenException into an Error object.
+     *
+     * @param exception The RefreshTokenException to transform.
+     * @return Error object containing error code and message.
+     */
     private static Error transform(RefreshTokenException exception) {
         return new Error("REFRESH_COMMON", null);
     }

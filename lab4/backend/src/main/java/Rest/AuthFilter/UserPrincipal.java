@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.security.Principal;
 
+/**
+ * Represents a user principal implementing the Principal interface.
+ */
 @Data
 @AllArgsConstructor
 public class UserPrincipal implements Principal {

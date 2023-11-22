@@ -20,7 +20,25 @@ const LoginPage = () => {
         register,
         handleSubmit,
         formState: {errors},
+        setValue
     } = useForm();
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        const updatedValue = value.replace(/[\t ]/g, "");
+        setValue(name, updatedValue);
+    };
+
+    const validateForm = (value) => {
+        const regex = /^[a-zA-Zа-яА-ЯёЁ0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/;
+        if (!regex.test(value)) {
+            const invalidChars = value.split('').filter((char, index, self) => {
+                return !regex.test(char) && self.indexOf(char) === index;
+            }).join(', ');
+            return `Invalid character(s): ${invalidChars}`;
+        }
+        return true;
+    };
 
     useEffect(() => {
         const handleStorageChange = () => {
@@ -66,8 +84,10 @@ const LoginPage = () => {
                                 minLength: {
                                     value: 6,
                                     message: "Username should be at-least 6 characters"
-                                }
+                                },
+                                validate: validateForm
                             })}
+                            onChange={handleInputChange}
                         />
                         {errors.username && <p>{errors.username.message}</p>}
                     </div>
@@ -83,8 +103,10 @@ const LoginPage = () => {
                                 minLength: {
                                     value: 6,
                                     message: "Password should be at-least 6 characters"
-                                }
+                                },
+                                validate: validateForm
                             })}
+                            onChange={handleInputChange}
                         />
                         {errors.password && <p>{errors.password.message}</p>}
                         {error && <p className="error-message">{error}</p>}

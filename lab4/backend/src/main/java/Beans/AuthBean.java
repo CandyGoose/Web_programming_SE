@@ -18,12 +18,27 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * The AuthBean class manages user authentication and registration within the system.
+ * It provides functionalities for user login, token generation, refreshing tokens, and registration.
+ * Uses JWT for token creation and manages user data in the database.
+ */
 @Stateless
 @Log
 public class AuthBean {
+    /**
+     * Entity manager to interact with the database.
+     */
     @PersistenceContext(unitName = "persistence-unit")
     private EntityManager entityManager;
 
+    /**
+     * Performs user login based on the provided login request.
+     *
+     * @param request The login request containing username and password.
+     * @return Tokens object containing access and refresh tokens.
+     * @throws LoginException if user is not found or password is incorrect.
+     */
     public Tokens login(LoginRequest request) throws LoginException {
         UserDB user = findUserByUsername(request.getUsername())
                 .orElseThrow(() -> {
@@ -42,6 +57,13 @@ public class AuthBean {
         return new Tokens(accessToken, refreshToken);
     }
 
+    /**
+     * Generates new tokens based on the refresh token provided.
+     *
+     * @param request The refresh token request.
+     * @return Tokens object containing new access and refresh tokens.
+     * @throws RefreshTokenException if the refresh token is invalid.
+     */
     public Tokens refreshToken(RefreshTokenRequest request) throws RefreshTokenException {
         UserDB user = findByRefreshToken(request.getRefresh()).orElseThrow(RefreshTokenException::new);
         String accessToken = JWTUtils.tokenForUser(user);
@@ -49,6 +71,12 @@ public class AuthBean {
         return new Tokens(accessToken, refreshToken);
     }
 
+    /**
+     * Registers a new user based on the provided registration request.
+     *
+     * @param request The registration request containing username and password.
+     * @throws RegistrationException if registration fails due to invalid data or existing username.
+     */
     public void registration(RegistrationRequest request) throws RegistrationException {
         AuthBean.validate(request);
 
@@ -65,6 +93,12 @@ public class AuthBean {
         entityManager.persist(user);
     }
 
+    /**
+     * Finds a user in the database based on the provided username.
+     *
+     * @param username The username to search for.
+     * @return Optional containing the user if found, else empty.
+     */
     private Optional<UserDB> findUserByUsername(String username) {
         try {
             Query namedQuery = entityManager.createNamedQuery("UserDB.findByUsername");
@@ -76,6 +110,12 @@ public class AuthBean {
         }
     }
 
+    /**
+     * Finds a user in the database based on the provided refresh token.
+     *
+     * @param refreshToken The refresh token to search for.
+     * @return Optional containing the user if found, else empty.
+     */
     private Optional<UserDB> findByRefreshToken(String refreshToken) {
         try {
             Query namedQuery = entityManager.createNamedQuery("UserDB.findByRefreshToken");
@@ -87,6 +127,12 @@ public class AuthBean {
         }
     }
 
+    /**
+     * Validates the RegistrationRequest object for registration purposes.
+     *
+     * @param request RegistrationRequest object to be validated.
+     * @throws RegistrationException when validation fails due to missing or invalid data.
+     */
     private static void validate(RegistrationRequest request) throws RegistrationException {
         if (Objects.isNull(request.getUsername()))
             throw RegistrationException.notEnoughData("Hasn't username");
