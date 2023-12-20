@@ -1,5 +1,10 @@
 # Лабораторная работа #2
 ### Номер варианта: _223317_
+
+Интерфейс:
+
+![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/80f0ac34-6488-460f-bf73-b67f89038a20)
+
 ## Внимание! У разных вариантов разный текст задания!
 
 ![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/3149b234-5270-42da-aaaf-2c0652e788c0)
@@ -52,3 +57,107 @@ __Вопросы к защите лабораторной работы:__
 12. Параметры конфигурации JSP в дескрипторе развёртывания веб-приложения.
 13. Шаблоны проектирования и архитектурные шаблоны. Использование в веб-приложениях.
 14. Архитектура веб-приложений. Шаблон MVC. Архитектурные модели Model 1 и Model 2 и их реализация на платформе Java EE.
+
+# Локальный запуск
+1) Скачайте WildFly с [сайта](https://www.wildfly.org/downloads/) (я использую 21.0.0 Final: Jakarta EE Full & Web Distribution)
+2) Разархивируйте и перейдите в папку `standalone/configuration`
+3) Откройте `standalone.xml`
+4) В конце этого файла измените в строке порт 8080 на порт из `Portbase` гугл-журнала, либо любой другой, который не будет занят кем-то еще (хотя локально можно не менять)
+```
+<socket-binding name="http" port="${jboss.http.port:8080}"/>
+```
+Пример:
+```
+<socket-binding name="http" port="${jboss.http.port:65435}"/>
+```
+5) Откройте проект
+6) Сверху справа раскройте меню -> `Edit Configurations...`
+   
+![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/10256807-c144-4840-b266-cdf415d6ddef)
+
+7) Нажмите на `+ -> JBoss/WildFly Server -> Local`
+
+![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/cad129b3-16ef-4c12-94f8-b1e19219ad23)
+
+8) Нажмите `Configure...` и укажите путь до папки с WildFly
+
+![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/9d31c452-7898-4dbb-b9a5-2dc883ca09fa)
+
+![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/a33aaf7a-d8e0-43ad-b0f5-9dd33c24cb46)
+
+9) Внизу нажмите на кнопку `Fix` и выберете `war exploded`
+
+![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/2967950e-8a00-4c83-a10d-3b901a5dd821)
+
+![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/f560c25a-14f2-4daa-b4f1-f6d7afb62daf)
+
+10) Теперь можно нажать `Apply` и запустить WildFly по зеленой кнопке
+
+![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/5e2ffe2c-efc9-44cb-b4b7-1e9e9fa9b4ca)
+
+# Деплой 2 лабы на Helios
+
+1) Скачайте WildFly с [сайта](https://www.wildfly.org/downloads/) (я использую 21.0.0 Final: Jakarta EE Full & Web Distribution)
+2) Закиньте его на гелиос
+```
+scp -P 2222 wildfly-21.0.0.Final.zip sXXXXXX@helios.cs.ifmo.ru:~/
+```
+3) Подключитесь к гелиосу и распакуйте его (лучше закидывать именно зипку, а не распакованную папку, потому что очень часто при перекидывании папки теряются файлы и WildFly не запускается)
+```
+unzip wildfly-21.0.0.Final.zip
+```
+4)  
+- Вариант №1: Перейдите в папку `standalone/configuration` и откройте файл `standalone.xml` для редактирования
+
+```
+vi ./standalone/configuration/standalone.xml
+```
+
+- Вариант №2: изменить этот файл локально и заменить его на гелиосе.
+
+5) В конце файла поменяйте порт 8080 на порт из `Portbase` гугл-журнала, либо любой другой, который не будет занят кем-то еще
+```
+<socket-binding name="http" port="${jboss.http.port:8080}"/>
+```
+Пример:
+```
+<socket-binding name="http" port="${jboss.http.port:65435}"/>
+```
+Напоминание как редактировать в vim: чтобы начать редактировать нажмите `i`, чтобы сохранить файл и выйти из редактора, надо нажать `Esc` и набрать `:wq` (иногда требуется поставить `!` в конце). Если вы хотите выйти без сохранения наберите `:q!`
+
+__Наш сервер готов, если все верно, то до 3 лабы ничего менять больше не надо__ 
+
+6) Делаем war архив лабы, для этого в idea ищем сверху `Build -> Build Artifacts... -> All Artifacts -> Build`
+
+![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/394dfa7d-efdd-4e5a-9077-04b93476df30)
+
+![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/76560f3e-b15d-48c2-bea8-a0d4af731ca3)
+
+7) После этого в папке `target` будет лежать наш war архив, который мы тоже закидываем на гелиос
+
+![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/682335a1-838d-4971-a1a2-547a4c82a3f7)
+
+```
+scp -P 2222 ./target/lab2-1.0-SNAPSHOT.war sXXXXXX@helios.cs.ifmo.ru:~/
+```
+
+8) Подключаемся к гелиосу, сразу пробрасывая порт, который вы указали в пункте 5
+```
+ssh -L <local-port>:localhost:<helios-port> s368283@helios.cs.ifmo.ru -p 2222
+```
+Пример:
+```
+ssh -L 8080:localhost:65435 s368283@helios.cs.ifmo.ru -p 2222
+```
+9) Переместим war архив в `wildfly-21.0.0.Final/standalone/deployments/`
+```
+mv lab2-1.0-SNAPSHOT.war wildfly-21.0.0.Final/standalone/deployments/
+```
+_Примечание._ Я бы не рекомендовала закидывать war через административную консоль, потому что если надо будет обновить war, то сделать это получится только через сайт, для которого надо запускать ./wildfly-21.0.0.Final/bin/add-user.sh (только один раз), менять еще один порт из 5 пункта (8090), пробрасывать его каждый раз для того чтобы использовать сайт, короче оно вам не надо.
+10) Теперь мы можем запустить лабу командой:
+```
+./wildfly-21.0.0.Final/bin/standalone.sh
+```
+11) Отрываем браузер по ссылке [http://localhost:8080/lab2-1.0-SNAPSHOT/](http://localhost:8080/lab2-1.0-SNAPSHOT/), радуемся 
+
+_Примечание._ Чтобы заменить war, надо сначала перейти в `wildfly-21.0.0.Final/standalone/deployments/` и удалить сам .war и .war.deployed, а затем закинуть новый.
