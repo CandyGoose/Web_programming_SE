@@ -1,5 +1,13 @@
 # Лабораторная работа #4
 ### Номер варианта: _20038_
+
+Интерфейс:
+
+![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/b549f980-ee71-439a-9447-e521b78fef38)
+
+![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/094d7cc5-5a1c-441f-bf43-c85272f73925)
+
+
 ## Внимание! У разных вариантов разный текст задания!
 
 Переписать приложение из [предыдущей лабораторной работы](https://github.com/VeraKasianenko/Web_programming_SE/tree/main/lab3) с использованием следующих технологий:
@@ -57,5 +65,36 @@ __Вопросы к защите лабораторной работы:__
 21. Angular: шаблоны страниц, жизненный цикл компонентов, подключение CSS.
 22. Angular: клиент-серверное взаимодействие, создание, отправка и валидация данных форм.
 
-## Как запустить лабу?
+# Запуск
+**Предупреждение:** запустить на гелиосе не получится, так как используется 8 версия джавы, которой нет на гелиосе.
+1) Запуск бэка как во [2](https://github.com/VeraKasianenko/Web_programming_SE/blob/main/lab2/README.md) и [3](https://github.com/VeraKasianenko/Web_programming_SE/blob/main/lab3/README.md) лабе
 
+Примечание: если на странице с адресом сервера возникает `Forbidden`, то это нормально. Так и должно быть. 
+
+![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/19247dde-fbcd-4a9c-b611-bb96c3589cf8)
+
+2) Для запуска фронта сначала необходимо установить все пакеты
+```
+npm install
+```
+Проверьте, что в этой строке нет __фиолетовых__ слов (желтые и красные это нормально). Пример нормального поведения:
+
+![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/935021b9-2c0e-4e0f-939e-132ae3968aff)
+
+Если они есть, то пробуйте:
+```
+npm install -g npm-check-updates
+ncu -u
+```
+или 
+```
+npm install -g npm-check
+npm-check -u
+```
+
+3) Запустите фронт
+```
+npm start
+```
+
+Должна открыться страница http://localhost:3000/lab4

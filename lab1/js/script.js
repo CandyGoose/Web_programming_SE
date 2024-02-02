@@ -116,7 +116,7 @@ form.addEventListener('submit', e => {
 
     xhr.onloadend = () => {
         if (xhr.status === 200) {
-            window.location.href = "table.html";
+            // window.location.href = "table.html";
             tbody.innerHTML = xhr.response;
             
             let isHit = document.querySelector('tbody tr:last-child td:last-child span').classList.contains('hit')
