@@ -3,13 +3,13 @@
 
 Интерфейс:
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/f331c444-5530-4ac2-937f-ef9009567cbe)
+![image](img/img1.png)
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/f5520ba9-69c4-49de-82ad-a16acef408c7)
+![image](img/img2.png)
 
 ## Внимание! У разных вариантов разный текст задания!
 
-![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/6fbc57ba-e218-47a3-8d8d-ba84af3b2dea)
+![image](img/img3.png)
 
 __Изменения данных__
 - изменение X: p:slider (-5 … 5), шаг изменения - 0.1
@@ -53,7 +53,7 @@ __Вопросы к защите лабораторной работы:__
 12. Технология JPA. Особенности, API, интеграция с ORM-провайдерами.
 
 # Запуск
-Я использую 21 версию wildfly и локальный postgres (гайд по установке [тут](https://github.com/VeraKasianenko/Programming_2_term_SE/tree/main/lab7))
+Я использую 21 версию wildfly и локальный postgres (гайд по установке [тут](https://github.com/CandyGoose/Programming_2_term_SE/tree/main/lab7))
 1) Откройте `standalone.xml` в `standalone/configuration` 
 2) Необходимо заменить
 ```xml
@@ -94,7 +94,7 @@ __Вопросы к защите лабораторной работы:__
 ```xml
 <default-bindings context-service="java:jboss/ee/concurrency/context/default" datasource="java:jboss/datasources/ExampleDS" managed-executor-service="java:jboss/ee/concurrency/executor/default" managed-scheduled-executor-service="java:jboss/ee/concurrency/scheduler/default" managed-thread-factory="java:jboss/ee/concurrency/factory/default"/>
 ```
-3) Поместить [postgresql-42.2.5.jar](https://github.com/VeraKasianenko/Web_programming_SE/tree/main/lab3/pg/postgresql-42.2.5.jar) в `standalone/deployments`
-4) Создать необходимые [таблицы для бд](https://github.com/VeraKasianenko/Web_programming_SE/blob/main/lab3/result_table.sql)
-5) Поменять логин и пароль в [конфигурации](https://github.com/VeraKasianenko/Web_programming_SE/blob/main/lab3/src/main/resources/META-INF/persistence.xml)
+3) Поместить [postgresql-42.2.5.jar](https://github.com/CandyGoose/Web_programming_SE/tree/main/lab3/pg/postgresql-42.2.5.jar) в `standalone/deployments`
+4) Создать необходимые [таблицы для бд](https://github.com/CandyGoose/Web_programming_SE/blob/main/lab3/result_table.sql)
+5) Поменять логин и пароль в [конфигурации](https://github.com/CandyGoose/Web_programming_SE/blob/main/lab3/src/main/resources/META-INF/persistence.xml)
 6) Далее запуск как во 2 лабе

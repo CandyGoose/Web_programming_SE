@@ -3,14 +3,14 @@
 
 Интерфейс:
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/b549f980-ee71-439a-9447-e521b78fef38)
+![image](img/img1.png)
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/094d7cc5-5a1c-441f-bf43-c85272f73925)
+![image](img/img2.png)
 
 
 ## Внимание! У разных вариантов разный текст задания!
 
-Переписать приложение из [предыдущей лабораторной работы](https://github.com/VeraKasianenko/Web_programming_SE/tree/main/lab3) с использованием следующих технологий:
+Переписать приложение из [предыдущей лабораторной работы](https://github.com/CandyGoose/Web_programming_SE/tree/main/lab3) с использованием следующих технологий:
 
 - Уровень back-end должен быть основан на `Java EE (необходимо использовать EJB)`.
 - Уровень front-end должен быть построен на `React + Redux (необходимо использовать ES6 и JSX)` с использованием `набора компонентов PrimeReact`
@@ -39,7 +39,7 @@ __Дополнительные требования к приложению:__
 - Все результаты проверки должны сохраняться в базе данных под управлением СУБД `PostgreSQL`.
 - Для доступа к БД необходимо использовать `JPA`.
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/ea7ff8a9-4278-455e-ae52-f07f14de91fc)
+![image](img/img3.png)
 
 __Вопросы к защите лабораторной работы:__
 1. Платформа Java EE. Спецификации и их реализации.
@@ -67,11 +67,11 @@ __Вопросы к защите лабораторной работы:__
 
 # Запуск
 **Предупреждение:** запустить на гелиосе не получится, так как используется 8 версия джавы, которой нет на гелиосе.
-1) Запуск бэка как во [2](https://github.com/VeraKasianenko/Web_programming_SE/blob/main/lab2/README.md) и [3](https://github.com/VeraKasianenko/Web_programming_SE/blob/main/lab3/README.md) лабе
+1) Запуск бэка как во [2](https://github.com/CandyGoose/Web_programming_SE/blob/main/lab2/README.md) и [3](https://github.com/CandyGoose/Web_programming_SE/blob/main/lab3/README.md) лабе
 
 Примечание: если на странице с адресом сервера возникает `Forbidden`, то это нормально. Так и должно быть. 
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/19247dde-fbcd-4a9c-b611-bb96c3589cf8)
+![image](img/img4.png)
 
 2) Для запуска фронта сначала необходимо установить все пакеты
 ```
@@ -79,7 +79,7 @@ npm install
 ```
 Проверьте, что в этой строке нет __фиолетовых__ слов (желтые и красные это нормально). Пример нормального поведения:
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/935021b9-2c0e-4e0f-939e-132ae3968aff)
+![image](img/img5.png)
 
 Если они есть, то пробуйте:
 ```

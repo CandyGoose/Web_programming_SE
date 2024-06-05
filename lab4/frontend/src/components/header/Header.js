@@ -52,7 +52,7 @@ const Header = ({
     return <div className="header">
         <div className="header__row">
             <div className="header__title">
-                <a href="https://github.com/VeraKasianenko/Web_programming_SE/tree/main/lab4">{studentName} | {studentGroup} | #{variant}</a>
+                <a href="https://github.com/CandyGoose/Web_programming_SE/tree/main/lab4">{studentName} | {studentGroup} | #{variant}</a>
             </div>
             {isMainPage ? (
                 <div className="header__menu menu">

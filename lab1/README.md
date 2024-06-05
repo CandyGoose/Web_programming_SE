@@ -6,11 +6,11 @@
 
 index.html
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/a9ee4c44-0c08-4278-9ce8-fc5e8dc27213)
+![image](img_readme/img1.png)
 
 table.html
 
-![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/12bdf694-ab01-4e3e-8a92-80f2140e3f71)
+![image](img_readme/img2.png)
 
 ## Внимание! У разных вариантов разный текст задания!
 Разработать PHP-скрипт, определяющий попадание точки на координатной плоскости в заданную область, и создать HTML-страницу, которая формирует данные для отправки их на обработку этому скрипту.
@@ -33,7 +33,7 @@ __Изменения данных__
 - изменение Y: Text (-3 … 5)
 - Изменение R: Button {'1', '1.5', '2', '2.5', '3'}
 
-![image](https://github.com/VeraKasianenko/Programming_2_term_SE/assets/112972833/e3be3d40-5d8c-40a2-b0a7-5bfdbbf20a45)
+![image](img_readme/img3.png)
 
 __Вопросы к защите лабораторной работы:__
 1. Протокол HTTP. Структура запросов и ответов, методы запросов, коды ответов сервера, заголовки запросов и ответов.
@@ -53,7 +53,7 @@ __Вопросы к защите лабораторной работы:__
 
 
 # Локальный запуск
-Вы можете посмотреть 2 и 4 пункты из [гайда](https://github.com/VeraKasianenko/OPD_web) (порты можно не менять, тогда лаба будет доступна на [http://localhost/](http://localhost/))
+Вы можете посмотреть 2 и 4 пункты из [гайда](https://github.com/CandyGoose/OPD_web) (порты можно не менять, тогда лаба будет доступна на [http://localhost/](http://localhost/))
 
 # Деплой 1 лабы на Helios
 1) Необходимо закинуть все файлы на Helios (лучше кидать папку)
@@ -62,7 +62,7 @@ __Вопросы к защите лабораторной работы:__
 scp -P 2222 -r dir sXXXXXX@helios.cs.ifmo.ru:~/
 ```
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/a774c75c-071f-4916-b911-bd5dc6a024a8)
+![image](img_readme/img4.png)
 
 В данном случае `dir` это папка со всеми файлами
 
@@ -79,7 +79,7 @@ cd dir
 mv * ./../public_html/
 ```
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/b5354b66-e248-44ad-acec-87b44f8507e2)
+![image](img_readme/img5.png)
 
 **Важно!** Чтобы лаба отображалась на сайте все файлы обязательно должны лежать в `public_html`
 
@@ -98,7 +98,7 @@ rm -r dir
 ```
 - Что делать, если вы видите ошибку `Forbidden`, но при этом все файлы в `public_html`
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/9c12dac2-6c11-41df-a40b-321e2c15f3ff)
+![image](img_readme/img6.png)
 
 Попробуйте дать права и зайти на сайт снова: 
 
@@ -106,4 +106,4 @@ rm -r dir
 chmod 755 *
 ```
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/999ef35a-8e2c-4351-9c58-bb479af914e1)
+![image](img_readme/img7.png)

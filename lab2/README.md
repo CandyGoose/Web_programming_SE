@@ -3,11 +3,11 @@
 
 Интерфейс:
 
-![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/80f0ac34-6488-460f-bf73-b67f89038a20)
+![image](img/img1.png)
 
 ## Внимание! У разных вариантов разный текст задания!
 
-![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/3149b234-5270-42da-aaaf-2c0652e788c0)
+![image](img/img2.png)
 
 __Изменения данных__
 - изменение X: Button {'-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3'}
@@ -73,27 +73,27 @@ __Вопросы к защите лабораторной работы:__
 5) Откройте проект
 6) Сверху справа раскройте меню -> `Edit Configurations...`
    
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/10256807-c144-4840-b266-cdf415d6ddef)
+![image](img/img3.png)
 
 7) Нажмите на `+ -> JBoss/WildFly Server -> Local`
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/cad129b3-16ef-4c12-94f8-b1e19219ad23)
+![image](img/img4.png)
 
 8) Нажмите `Configure...` и укажите путь до папки с WildFly
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/9d31c452-7898-4dbb-b9a5-2dc883ca09fa)
+![image](img/img5.png)
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/a33aaf7a-d8e0-43ad-b0f5-9dd33c24cb46)
+![image](img/img6.png)
 
 9) Внизу нажмите на кнопку `Fix` и выберете `war exploded`
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/2967950e-8a00-4c83-a10d-3b901a5dd821)
+![image](img/img7.png)
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/f560c25a-14f2-4daa-b4f1-f6d7afb62daf)
+![image](img/img8.png)
 
 10) Теперь можно нажать `Apply` и запустить WildFly по зеленой кнопке
 
-![image](https://github.com/VeraKasianenko/Web_programming_SE/assets/112972833/5e2ffe2c-efc9-44cb-b4b7-1e9e9fa9b4ca)
+![image](img/img9.png)
 
 # Деплой 2 лабы на Helios
 
@@ -129,13 +129,13 @@ __Наш сервер готов, если все верно, то до 3 лаб
 
 6) Делаем war архив лабы, для этого в idea ищем сверху `Build -> Build Artifacts... -> All Artifacts -> Build`
 
-![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/394dfa7d-efdd-4e5a-9077-04b93476df30)
+![image](img/img10.png)
 
-![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/76560f3e-b15d-48c2-bea8-a0d4af731ca3)
+![image](img/img11.png)
 
 7) После этого в папке `target` будет лежать наш war архив, который мы тоже закидываем на гелиос
 
-![image](https://github.com/VeraKasianenko/VeraKasianenko/assets/112972833/682335a1-838d-4971-a1a2-547a4c82a3f7)
+![image](img/img12.png)
 
 ```
 scp -P 2222 ./target/lab2-1.0-SNAPSHOT.war sXXXXXX@helios.cs.ifmo.ru:~/
